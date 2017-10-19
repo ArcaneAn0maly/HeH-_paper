@@ -1,0 +1,150 @@
+\documentclass[aps,onecolumn]{revtex4}
+%\setlength{\oddsidemargin}{-.38in}
+%\setlength{\textheight}{9.6in}
+\setlength{\textheight}{10.0in}
+%\setlength{\textwidth}{6.7in}
+%\setlength{\topmargin}{-0.3in}
+\usepackage{bm}
+\usepackage{array}
+\usepackage{color}
+\usepackage{rotating}
+\usepackage{lscape}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{cases}
+\usepackage{tikz,pgfplots}
+\pgfplotsset{compat=1.10,width=12cm,
+legend style={at={(0.03,0.5)},anchor=west}}
+%This defines the interval between lines. To generate
+%doublespaced text set it to 2.0
+%\renewcommand{\baselinestretch}{1.92}
+
+\renewcommand{\baselinestretch}{1.92}
+\newcommand{\tr}{\mathop{\rm tr}\nolimits}
+\renewcommand{\d}{\mathop{\rm d \!\,}\nolimits}
+\renewcommand{\vec}{\mathop{\rm vec}\nolimits}
+\newcommand{\vech}{\mathop{\rm vech}\nolimits}
+%Key 1
+\begin{document}
+\title{Very accurate rovibrational transitions of
+HeH$^+$ in the ground electronic state}
+\author{
+Keith Jones$^{a}$, Monika Stanke,
+Ludwik Adamowicz$^{a,b}$}
+\affiliation{
+$^{a}$Department of Chemistry and Biochemistry,
+University of Arizona, Tucson, Arizona 85721, U.S.A.
+\nonumber\\
+$^{b}$Department of Physics,
+University of Arizona, Tucson, Arizona 85721, U.S.A.}
+
+%Key 0 - abstract
+\begin{abstract}
+HeH$^+$ rovibrational transitions are calculated using a very accurate Born-Oppenheimer
+potential energy surface, which is supplemented with adiabatic and non-adiabatic corrections
+for nuclear motion, and relativistic corrections for electron motion. Comparisons are made
+with leading experimental data.
+\end{abstract}
+
+\maketitle
+
+%Key 1 - Intro
+\section{Introduction}
+\label{Introduction}
+HeH$^+$ is the lightest, bound heteronuclear diatomic molecule. It is composed of the
+two most abundant elements in the universe. The presence of HeH$^+$ in interstellar space and
+planetary nebulae is expected \cite{Astro3, Astro4, Astro5}, and steady state abundances
+of the molecule under different conditions have been calculated \cite{Astro1_SS_HeH+} although
+it has yet to be observed \cite{Astro2, PES5}.
+
+The existence of HeH$^+$ was confirmed in 1925 by mass spectrometry of discharges
+containing He and H \cite{exp3}. Optical measurements would follow decades later.
+HeH$^+$ has a permanent dipole moment, and very
+accurate transition energies can be measured because of this. In 1979, the first rovibrational
+transitions for HeH$^+$  ever measured, 5 transitions in total, were in the fundamental
+band and the first hot band of the electronic ground state \cite{exp2} with uncertainties
+of 0.002 cm$^{-1}$. In the following decades, many more pure rotational \cite{exp1, exp7, exp9}
+and rovibrational \cite{exp4, exp5, exp6, exp8, exp9, exp10} transitions were measured, for
+multiple isotopologues \cite{exp1, exp4, exp10}, with many of the later measurements collected
+using tunable diode lasers \cite{exp7, exp8, exp10}. There were also transitions between bound
+and quasibound levels measured \cite{exp5}.
+
+%1.) 1997 - pure rotational transitions of $^4$HeH$^+$, $^4$HeD$^+$, $^3$HeH$^+$, and
+%    $^3$HeD$^+$ in the vibrational ground state \cite{exp1}.
+%2.) 1989 - 54 total transitions spanning all four of the common isotopologues in either the
+%    fundamental or first hot band. Uncertainties between 0.001 and 0.005 cm$^{-1}$ \cite{exp4}.
+%3.) 1983 - Many different rovibrational transitions measured, including bound to quasibound
+%    transitions \cite{exp5}.
+%4.) 1982 - 9 rovibrational transitions measured in the fundamental band \cite{exp6}.
+%5.) 1987 - First time using a tunable diode laser for rotational spectrocopy of molecular ions.
+%    J=7<-6 transition in the vibrational ground state of HeH$^+$ \cite{exp7}.
+%6.) 1987 - Tunable diode lasers used to measure rovibrational transitions of HeH$^+$ in the
+%    fundamental and first hot band \cite{exp8}.
+%7.) 1997 - Pure rotational transitions with $\nu$ = 0, 1, 2 and high J (10-21) up to the
+%    dissociation limit were measured. 10 new rovibrational levels also measured up to the
+%    dissociation limit \cite{exp9}.
+%8.) 1992 - Rovibrational transitions in the $\nu$ = 0<-1, $\nu$ = 1<-2, $\nu$ = 2<-3, and
+%    $\nu$ = 3<-4 bands were measured for HeH$^+$ and HeD$^+$ with a tunable diode laser
+%    \cite{exp10}.
+
+It is important for computational models to keep up with the accuracy of experimental
+measurements in order for the unobserved transitions in this system calculated with
+those models to be assumed correct. The most common way to model diatomics is to construct
+a potential energy surface, for the internuclear coordinate, and then solving the radial
+Schr$\ddot{o}$dinger equation to acquire the rovibrational levels.
+
+The first potential energy surface for HeH$^+$ that was done accurately used a 64-term
+generalized James-Coolidge expansion for the wavefunction \cite{PES7}, which allowed the
+approximation of the equilibrium bond length and the dissociation energy. Later, a potential
+energy surface of HeH$^+$ between 0.9 and 9 au was constructed using an 83-term variational
+wave function expansion in elliptic coordinates with linear and non-linear variational
+parameters \cite{PES3, PES4}, which was later improved by using a larger basis set and
+adiabatic corrections \cite{PES8}. A potential energy curve for HeH$^+$ was fitted using
+experimental transitions and 19 tunable parameters \cite{PES2_exptrans_fit}. Recently,
+a very accurate Born-Oppenheimer (BO) potential energy surface was constructed for HeH$^+$
+in a basis of "asymptotically correct generalized Heitler-London functions"\cite{PES6},
+followed by adiabatic, non-adiabatic, relativistic, and radiative corrections, which allowed
+the accurate calculation of the rovibrational transitions \cite{PES5}.
+
+Explicitly correlated Gaussian functions (ECGs) have been used to describe HeH$^+$ with accurate
+single point calculations carried out for different electronic states \cite{ECG_HeH+} at
+the equilibrium distance and a potential energy surface developed in 2012 which incorporated
+adiabatic and non-adiabatic corrections \cite{HeH+_Wei2012}.
+
+ECGs have also been used to describe HeH$^+$ without assuming the Born-Oppenheimer approximation.
+All rotationless vibrational states in the ground electronic have been calculated \cite{Theory3}
+with relativistic and radiative corrections \cite{Theory4, Theory2}. This has also been done
+with complex basis functions \cite{Theory1}. These wavefunctions are probabilistic functions
+of both electrons and nuclei and can be used to glean insight into molecular structure that is
+not possible from the BO description.
+
+%MAYBE WHEN DISCUSSING WORK THAT HAS BEEN DONE, MENTION THE ORDER TO WHICH THE REL. RAD. CORRECTIONS
+%HAVE BEEN DONE FOR EACH PARTICULAR STUDY.
+%MAYBE MENTION ACCURACY OF DIFFERENT CALCULATSION IN CM-1
+
+\section{Methodology}
+\label{MTD}
+Methodology
+
+\section{Results}
+\label{Results}
+Results
+
+\section{Conclusions}
+Conclusions
+
+\section{Acknowledgements}
+We are grateful to the University of Arizona Center of Computing and Information Technology
+for the use of their computer resources and the El Gato cluster, NSF grant number 1228509.
+
+\newpage
+
+%Key bib
+\bibliography{paper}
+
+\newpage
+
+\end{document}
