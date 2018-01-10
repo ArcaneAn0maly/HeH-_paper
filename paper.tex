@@ -32,21 +32,32 @@ legend style={at={(0.03,0.5)},anchor=west}}
 \title{Very accurate rovibrational transitions of
 HeH$^+$ in the ground electronic state}
 \author{
-Keith Jones$^{a}$, Monika Stanke,
-Ludwik Adamowicz$^{a,b}$}
+Keith Jones$^{a}$, Monika Stanke$^{b}$, Ludwik Adamowicz$^{a,c}$}
 \affiliation{
 $^{a}$Department of Chemistry and Biochemistry,
 University of Arizona, Tucson, Arizona 85721, U.S.A.
 \nonumber\\
-$^{b}$Department of Physics,
+$^{b}$ Institute of Physics, Faculty of Physics, Astronomy, and Informatics,
+Nicolaus Copernicus University,
+ul. Grudzi\c{a}dzka 5, Toru\'{n},
+PL 87-100, Poland
+\nonumber\\
+$^{c}$Department of Physics,
 University of Arizona, Tucson, Arizona 85721, U.S.A.}
 
 %Key 0 - abstract
 \begin{abstract}
 HeH$^+$ rovibrational transitions are calculated using a very accurate Born-Oppenheimer
-potential energy surface, which is supplemented with adiabatic and non-adiabatic corrections
-for nuclear motion, and relativistic corrections for electron motion. Comparisons are made
-with leading experimental data.
+potential energy curve (PEC), which is generated in this work using variational calculations
+performed in the basis set of explictly correlated Gaussian functions with shifted
+centers. For each PEC point the exponential parameters of the Gaussins are optimized
+using a method employing the analytic energy gradient determined with respect
+to these parameters. The PEC energies are augmented 
+with adiabatic corrections
+for the nuclear motion and with the leading relativistic corrections for 
+the motion of the electrons. The non-adiabatic corrections are also
+approximately accounted for. A comparison is made
+with the leading experimental data.
 \end{abstract}
 
 \maketitle
@@ -54,7 +65,7 @@ with leading experimental data.
 %Key 1 - Intro
 \section{Introduction}
 \label{Introduction}
-HeH$^+$ is the lightest, bound heteronuclear diatomic molecule. It is composed of the
+HeH$^+$ is the lightest bound heteronuclear diatomic molecule. It is composed of the
 two most abundant elements in the universe. The presence of HeH$^+$ in interstellar space and
 planetary nebulae is expected \cite{Astro3, Astro4, Astro5}, and steady state abundances
 of the molecule under different conditions have been calculated \cite{Astro1_SS_HeH+} although
@@ -64,11 +75,13 @@ The existence of HeH$^+$ was confirmed in 1925 by mass spectrometry of discharge
 containing He and H \cite{exp3}. Optical measurements would follow decades later.
 HeH$^+$ has a permanent dipole moment, and very
 accurate transition energies can be measured because of this. In 1979, the first rovibrational
-transitions for HeH$^+$  ever measured, 5 transitions in total, were in the fundamental
-band and the first hot band of the electronic ground state \cite{exp2} with uncertainties
+transitions for HeH$^+$  ever measured (five transitions in total) were in the fundamental
+band and in the first hot band of the electronic ground state \cite{exp2}. The
+measurement had uncertainties
 of 0.002 cm$^{-1}$. In the following decades, many more pure rotational \cite{exp1, exp7, exp9}
-and rovibrational \cite{exp4, exp5, exp6, exp8, exp9, exp10} transitions were measured, for
-multiple isotopologues \cite{exp1, exp4, exp10}, with many of the later measurements collected
+and rovibrational \cite{exp4, exp5, exp6, exp8, exp9, exp10} transitions of
+HeH$^+$ were measured. The measurements were also done for
+multiple HeH$^+$ isotopologues \cite{exp1, exp4, exp10}. Many of the later measurements were performed
 using tunable diode lasers \cite{exp7, exp8, exp10}. There were also transitions between bound
 and quasibound levels measured \cite{exp5}.
 
@@ -91,35 +104,54 @@ and quasibound levels measured \cite{exp5}.
 %    \cite{exp10}.
 
 It is important for computational models to keep up with the accuracy of experimental
-measurements in order for the unobserved transitions in this system calculated with
-those models to be assumed correct. The most common way to model diatomics is to construct
-a potential energy surface, for the internuclear coordinate, and then solving the radial
-Schr$\ddot{o}$dinger equation to acquire the rovibrational levels.
+measurements of the rovibrational HeH$^+$ transitions 
+in order for the unobserved transitions in this system calculated with
+those models to be assumed correct. The most common way to model spectra of diatomics is to construct
+a potential energy curve (PEC) being a function of the internuclear distance, and then solving the
+Schr$\ddot{o}$dinger equation for the nuclear motion to acquire the rovibrational levels.
 
-The first potential energy surface for HeH$^+$ that was done accurately used a 64-term
-generalized James-Coolidge expansion for the wavefunction \cite{PES7}, which allowed the
-approximation of the equilibrium bond length and the dissociation energy. Later, a potential
-energy surface of HeH$^+$ between 0.9 and 9 au was constructed using an 83-term variational
+The first calculations of the potential energy curve for HeH$^+$ 
+in the ground electronic state 
+that was done accurately used a 64-term
+generalized James-Coolidge expansion for the wave function \cite{PES7}. 
+The calculation allowed the
+approximation of the equilibrium bond length and the dissociation energy. 
+Later, a ground-state potential
+energy curve of HeH$^+$ between 0.9 and 9~a.u. was constructed using an 83-term variational
 wave function expansion in elliptic coordinates with linear and non-linear variational
-parameters \cite{PES3, PES4}, which was later improved by using a larger basis set and
-adiabatic corrections \cite{PES8}. A potential energy curve for HeH$^+$ was fitted using
+parameters fully optimized \cite{PES3, PES4}. The PEC was later improved by using a larger basis set and
+by including adiabatic corrections \cite{PES8}. In contrast to the standard approach
+based o2n the quantum mechanical calculations, a potential energy
+curve for HeH$^+$ was also created by fitting using
 experimental transitions and 19 tunable parameters \cite{PES2_exptrans_fit}. Recently,
 a very accurate Born-Oppenheimer (BO) potential energy surface was constructed for HeH$^+$
 in a basis of "asymptotically correct generalized Heitler-London functions"\cite{PES6},
 followed by adiabatic, non-adiabatic, relativistic, and radiative corrections, which allowed
-the accurate calculation of the rovibrational transitions \cite{PES5}.
+ervice0 very accurate calculation of the rovibrational transitions \cite{PES5}.
 
-Explicitly correlated Gaussian functions (ECGs) have been used to describe HeH$^+$ with accurate
+Explicitly correlated Gaussian functions (ECGs) were used to describe HeH$^+$ with accurate
 single point calculations carried out for different electronic states \cite{ECG_HeH+} at
-the equilibrium distance and a potential energy surface developed in 2012 which incorporated
+the ground-state equilibrium distance. In 2012 the ECGs were also used
+to calculate a HeH$^+$ ground-state potential energy curve. The cureve incorporated
 adiabatic and non-adiabatic corrections \cite{HeH+_Wei2012}.
-
-ECGs have also been used to describe HeH$^+$ without assuming the Born-Oppenheimer approximation.
-All rotationless vibrational states in the ground electronic have been calculated \cite{Theory3}
-with relativistic and radiative corrections \cite{Theory4, Theory2}. This has also been done
-with complex basis functions \cite{Theory1}. These wavefunctions are probabilistic functions
-of both electrons and nuclei and can be used to glean insight into molecular structure that is
+ECGs have also been used to describe HeH$^+$ without assuming the Born-Oppenheimer (BO) approximation.
+All rotationless vibrational states in the ground electronic were calculated \cite{Theory3}
+with accounting for 
+the leading relativistic and radiative corrections \cite{Theory4, Theory2}. 
+This was also done using 
+complex Gaussian basis functions \cite{Theory1}. The non-BO wave functions are 
+functions of the coordinates 
+of both electrons and nuclei and can be used to glean insight into the 
+molecular structure that is
 not possible from the BO description.
+
+In this work, we introduce the leading
+relativistic and radiative corrections to the PEC of HeH$^+$ created
+in a similar way to the PEC generated in \cite{HeH+_Wei2012} 
+in order to calculate the 
+rovibrational transitions in the ground electronic state with
+increased accuracy. The results are compared with 
+the best available experimental data.
 
 %MAYBE WHEN DISCUSSING WORK THAT HAS BEEN DONE, MENTION THE ORDER TO WHICH THE REL. RAD. CORRECTIONS
 %HAVE BEEN DONE FOR EACH PARTICULAR STUDY.
@@ -127,7 +159,213 @@ not possible from the BO description.
 
 \section{Methodology}
 \label{MTD}
-Methodology
+\subsection{Optimization and basis set}
+The electronic wave function for each point on the potential energy curve is a
+linear expansion in terms of explicitly correlated Gaussian basis functions with shifted centers.
+The Gaussians have the following
+functional form:
+\begin{eqnarray}
+\phi_k(\mathbf{r}) = exp\Big[-(\mathbf{r - s_k})'(A_k\otimes I_3)(\mathbf{r - s_k})\Big], 
+\label{ECG}
+\end{eqnarray}
+where $\mathbf{r}$ is a $3n$-dimensional vector of electronic coordinates of the form [x$_1$,
+$y_1$,$z_1$,$x_2$,...,$z_n$] and $n$ is the number of electrons in the system, $\mathbf{s_k}$
+is a $3n$ dimensional vector of the coordinates of the Gaussian shifts, $A_k$ is an $n \times n$ 
+matrix of non-linear exponential. Matrix elements of both $\mathbf{s_k}$ and $A_k$ are 
+optimization parameters.
+In (\ref{ECG}) $\otimes$ represents the Kronecker product operation, and
+$I_3$ is the $3 \times 3$ identity matrix.
+Prime, '''", denotes the vector/matrix transposition.
+
+During the variational optimization, the linear expansion coefficients 
+of the wave function 
+are evaluated by solving the secular equation:
+\begin{eqnarray}
+(\mathbf{H} - E\mathbf{S})\mathbf{c}.
+\end{eqnarray}
+The non-linear parameters in the basis functions are also optimized. For an unrestricted
+optimization of the non-linear parameters in the basis set, the matrix $A_k$ is
+expressed as a Cholesky product of a lower triangular matrix and its transposed, $ L_k $ and $ L_k^{\prime} $,
+\begin{eqnarray}
+A_k = L_k L_k^{\prime}.
+\end{eqnarray}
+This allows one to optimize the elements of the $L_k$ matrix for each basis function with the freedom
+of using all real numbers without overstepping the requirement that each $A_k$ matrix be positive definite
+to ensure each ECG is square integrable. In addition to the $L_k$ matrix elements, the
+elements of the $\mathbf{s_k}$ vectors are also optimized.
+
+In \cite{HeH+_Wei2012}, the basis set for each PEC point was optimized 
+by a simultaneus optimization of all basis functions (global optimizations), 
+meaning the energy minimum 
+for each point on the curve
+depending on all of the non-linear parameters of all basis functions was found 
+using an optimization
+routine. The TN minimization routine \cite{TN} was ued. 
+In this work the basis set for each PEC point is optimized 
+by taking one basis function at a time of optimizing its non-linear parameters and
+then cycling over all functions several times to get the lowest possible total energy.
+In determing the minimum of the energy in terms of the non-linear parameters of a single function 
+the same optimization routine as used in the global optimization is used.
+The routine employes the energy gradient determing analytically by a direct differenciation 
+of the energy expression with respect to the non-linear parameter of the currently
+optimized function. This optimization is carried
+out with the parameters of the other functions kept frozen. 
+Each time the optimized function is changed, the secular equation is solved 
+to obtain optimal linear expansion coefficients. After the changes of the total energy
+in the optimization of a particula basis function
+fall below a certain assumed threshold, the optimization of
+the next function starts. This cyclic optimization of the basis set is carried out until
+convergence, as judged by comparing the energy changes and 
+the norm of the gradient vector with the assumed convergence thresholds,
+is reached (see fig. \ref{OptCyc}). 
+According to our experience,
+carrying out the optimization in this way makes it less
+likely that the optimization converges to a local minimum.
+Also, this optimization scheme allows to control and prevent linear dependencies
+between the basis functions to form, as such dependencies can lower the
+numerical accuracy of the calculation and a decrease of the optimization efficiency.
+
+To evaluate the energy, the analytic forms of the Hamiltonian and overlap matrix elements
+need to be determined.
+This was done before for the types of functions used in the present
+work \cite{Theory5, Theory6, Theory7}. The algorithms derived in those
+works have been implemented
+in the computer code used in the present calculations. 
+Additionally, algorithms for
+calculating the elements of the analytical gradient vector
+being the energy derivatives with respect to the non-linear parameters of
+the basis functions were also derived and implemented \cite{Theory5}.
+The use of the gradient in the optimization of the non-linear parameters
+of the Guassians is a single most important factor allowing for 
+achieving high accuracy in calculating the PEC.
+
+The wave functions constructed in this work for HeH$^+$ are very similar to the wave functions
+generated in 
+\cite{HeH+_Wei2012}. Wave functions from \cite{HeH+_Wei2012} are taken for the PEC points with
+internuclear distances between 0.35 and 2.10 a.u. and optimized. The wave functions for the remaining PEC
+points up to 100.0 a.u. are constructed by shifting the nuclear coordinates and adjusting
+the shifts of the individual basis functions by implementing the Gaussian product theorem as shown
+in \cite{GPT}. At this point, the non-linear parameters are reoptimized.
+
+\subsection{Adiabatic and non-Adiabatic corrections}
+The adiabatic corrections are calculated in the same way as in \cite{HeH+_Wei2012}.
+An exact molecular wave function can be obtained with an expansion 
+in a complete basis as:
+\begin{eqnarray}
+\Psi(\mathbf{r};\mathbf{R}) = \sum_{i}\chi_i(\mathbf{R})\psi_i(\mathbf{r};\mathbf{R}).
+\end{eqnarray}
+
+The electronic wave functions, $\psi(\mathbf{r};\mathbf{R})$ depend parametrically on the
+nuclear coordinates, $\mathbf{R}$, and form a discreet set of 
+wave functions for the PEC in the range
+of relevant values of the nuclear configurations. 
+When the electronic wave functions, $\psi_i$, are weakly coupled,
+variational optimization of $\chi_i$ leads to the following equation being satisfied \cite{Adiabatic1}:
+\begin{eqnarray}
+\bigg[-\frac{1}{2}\sum_{A=1}^{N_{nuc}}\frac{1}{M_A}\nabla_A^2 + \bigg<\psi_i\bigg|-\frac{1}{2}
+\sum_{A=1}^{N_{nuc}}\frac{1}{M_A}
+\nabla_A^2\psi_i\bigg>\bigg(\mathbf{R}\bigg) + E_e(\mathbf{R})\bigg]\chi_i = E\chi_i.
+\end{eqnarray}
+where $E_e(\mathbf{R}$) is the electronic energy 
+corresponding to the clamped nucleus Hamiltonian and $N_{nuc}$
+is the number of nuclei in the system. The second term,
+which depends parametrically on $R$, is called the Born-Oppenheimer diagonal correction \cite{Adiabatic1,
+Adiabatic2}. This is the first-order correction to the electronic Born-Oppenheimer energy due to the nuclear motion.
+The value of this term at each point, $\mathbf{R}$, is added to the energy 
+of the corresponding point of the PEC, $E_e(\mathbf{R})$.
+An improved potential energy is obtained. Solving the nuclear Schr$\ddot{o}$dinger equation with
+this correction gives improved results for calculated rotational and vibrational transition energies.
+From this point forward, the subscript, $i$ will no longer be used to refer to a specific electronic
+state because only one is used in this work.
+
+To calculate the adiabatic correction
+we implement the procedure of Cenzek and Kutzelnigg \cite{Adiabatic3}. 
+The procedure calculates the Born-Oppenheimer adiabatic
+diagonal correction. Using integration by parts, it can be shown that
+\begin{eqnarray}
+\bigg<\psi\bigg|\frac{\partial^2}{\partial Q_{i_A}^2}\bigg|\psi\bigg> = -\bigg<\frac{\partial\psi}{\partial Q_{i_A}}
+\bigg|\frac{\partial\psi}{\partial Q_{i_A}}\bigg>,
+\end{eqnarray}
+where $Q_{i_A}$ is Cartesian coordinate $i$ of nucleus $A$. 
+The partial derivative of the electronic wave function
+with respect to the nuclear coordinates is calculated numerically as:
+\begin{eqnarray}
+\frac{\partial\psi}{\partial Q_{i_A}} \approx \frac{\psi(Q_{i_A} + \frac{1}{2}\Delta Q_{i_A}) - 
+\psi(Q_{i_A} - \frac{1}{2}\Delta Q_{i_A})}{\Delta Q_{i_A}}.
+\end{eqnarray}
+
+Where $\Delta Q_{i_A}$ is some finite displacement of the nuclear coordinate.
+The energy for the adiabatic correction is (assuming  that the electronic wave function
+is normalized):
+\begin{eqnarray}
+E_{ad} = \Big<\psi\Big|-\frac{1}{2}\sum_{A=1}^{N_{nuc}}\sum_{i=1}^3\frac{1}{M_A}
+\frac{\partial^2}{\partial Q_{i_A}}\Big|\psi\big> = \nonumber\\
+\frac{1}{2}\sum_{A=1}^{N_{nuc}}\sum_{i=1}^3\frac{1}{M_A}\Big<\frac{\partial\psi}
+{\partial Q_{i_A}}\Big|\frac{\partial\psi}{\partial Q_{i_A}}\Big> = \nonumber\\
+\sum_{A=1}^{N_{nuc}}\sum_{i=1}^3\frac{1}{M_A(\Delta Q_{i_A})^2} \bigg[1 -\Big<\psi\Big(
+Q_{i_A} - \frac{1}{2}\Delta Q_{i_A}\Big)\Big|\psi\Big(Q_{i_A} + \frac{1}{2}\Delta Q_{i_A}\Big)\Big>
+\bigg],
+\end{eqnarray}
+where $M_A$ is the mass of nucleus $A$. 
+Differentiation between isopologues is simply a matter of recalculating
+$E_{ad}$ with different nuclear masses.
+
+Shifting the geometry of the system 
+slightly and recalculating its wave function, $\psi\Big(Q_{i_A} \pm \frac{1}{2}
+\Delta Q_{i_A}\Big)$ requires the utilization of the Gaussian product theorem \cite{ECG_HeH+}. Due to
+the fact that numerical differentiation is more effective with a smaller shift of geometrical
+coordinates and that
+the wave function 
+at the sifted geometry is not as well optimized as the wave function 
+at the unshifted geometry of the system, $\psi\Big(Q_{i_A}\Big), \Delta Q_{i_A}$
+is chosen to be small ($\Delta Q_{i_A} = 10^{-8}$ atomic units). 
+Smaller values of $\Delta Q_{i_A}$ can lead
+to loss of numerical precision in the calculation.
+
+\subsection{The leading relativistic and quantum electrodynamics corrections}
+
+
+In high-accuracy quantum-mechanical molecular calculations
+the quantum electrodynamics (QED) provides a
+general theoretical framework
+for calculating relativistic and QED corrections.
+At the zeroth-order level in such an approach 
+the relativistic effects are represented by
+a Hamiltonian derived based on the so--called non--relativistic QED
+theory (NRQED) \cite{d17,d18,d19,d20}.
+In this theory, the relativistic corrections
+appear as quantities proportional to powers of
+the fine structure parameter $\alpha$ (where $\alpha = \frac{1}{c}$)
+and are determined using the perturbation theory.
+In this work the relativistic Hamiltonian is the
+electronic relativistic Breit-Pauli Hamiltonian \cite{BS1977}
+representing the mass-velocity (MV), one- and two-electron
+Darwin (D), orbit-orbit (OO), and spin-spin (SS) relativistic corrections.
+The leading relativistic corrections are calculated as the expectation values
+of the corresponding relativistic operators using the non-relativistic
+BO electronic wave function expanded in terms of
+ECGs with shifted centers. The total correction calculated
+at each PEC point is a sum of the MV, D, OO, and SS contributions:
+\begin{eqnarray}
+E_{rel} = E_{rel}^{MV} +  E_{rel}^{D} +  E_{rel}^{OO} +  E_{rel}^{SS}.
+\end{eqnarray}
+The spin-orbit correction is zero due to the zero total spin
+of the electronic state considered in this work. 
+The BO electronic non-relativistic wave function
+is also used to calculated the leading QED correction
+called the Araki-Sucher correction.
+The Araki-Sucher QED correction \cite{Be,Ar,Su} provides the leading
+QED contribution to the rovibrational transition energies, as can be inferred, for example,
+from the calculations concerning the H$_2$ molecule\cite{Jeziorski}.
+The other contribution involving the so-called Bethe algorithm,
+though significant in its absolute value, changes little with the internuclear
+distance and can be neglected when calculating transition energies.
+
+In the present work the calculations of the leading
+relativistic and QED corrections are calculated using 
+the algorithms recently derived and implemented by our group \cite{ms1,ms2,ms3}
+The computer code that includes these algorithms runs in parallel
+employing the MPI (message passing interface) protocol.
 
 \section{Results}
 \label{Results}
@@ -146,5 +384,12 @@ for the use of their computer resources and the El Gato cluster, NSF grant numbe
 \bibliography{paper}
 
 \newpage
+
+\begin{figure}
+\caption{Cartoon representation of sequential, cyclic optimization of individual basis functions.
+k = function index. K = Total number of basis functions.}
+\includegraphics[width=0.5\linewidth]{OptCycle}
+\label{OptCyc}
+\end{figure}
 
 \end{document}
