@@ -247,7 +247,7 @@ points up to 100.0 a.u. are constructed by shifting the nuclear coordinates and 
 the shifts of the individual basis functions by implementing the Gaussian product theorem as shown
 in \cite{GPT}. At this point, the non-linear parameters are reoptimized.
 
-\subsection{Adiabatic and non-Adiabatic corrections}
+\subsection{Adiabatic correction}
 The adiabatic corrections are calculated in the same way as in \cite{HeH+_Wei2012}.
 An exact molecular wave function can be obtained with an expansion 
 in a complete basis as:
@@ -306,24 +306,65 @@ E_{ad} = \Big<\psi\Big|-\frac{1}{2}\sum_{A=1}^{N_{nuc}}\sum_{i=1}^3\frac{1}{M_A}
 Q_{i_A} - \frac{1}{2}\Delta Q_{i_A}\Big)\Big|\psi\Big(Q_{i_A} + \frac{1}{2}\Delta Q_{i_A}\Big)\Big>
 \bigg],
 \end{eqnarray}
-where $M_A$ is the mass of nucleus $A$. 
-Differentiation between isopologues is simply a matter of recalculating
-$E_{ad}$ with different nuclear masses.
+where $M_A$ is the mass of nucleus $A$.
 
 Shifting the geometry of the system 
 slightly and recalculating its wave function, $\psi\Big(Q_{i_A} \pm \frac{1}{2}
 \Delta Q_{i_A}\Big)$ requires the utilization of the Gaussian product theorem \cite{ECG_HeH+}. Due to
-the fact that numerical differentiation is more effective with a smaller shift of geometrical
-coordinates and that
-the wave function 
-at the sifted geometry is not as well optimized as the wave function 
+the fact that numerical differentiation is more effective with a smaller coordinate shift and that
+the wave function at the shifted geometry is not as well optimized as the wave function 
 at the unshifted geometry of the system, $\psi\Big(Q_{i_A}\Big), \Delta Q_{i_A}$
 is chosen to be small ($\Delta Q_{i_A} = 10^{-8}$ atomic units). 
 Smaller values of $\Delta Q_{i_A}$ can lead
 to loss of numerical precision in the calculation.
 
-\subsection{The leading relativistic and quantum electrodynamics corrections}
+\subsection{Non-adiabatic effect}
+In addition to the first order correction that accounts for the coupling of the nuclear and electronic
+motion (the adiabatic approximation), we approximate higher order corrections which take into account
+the fact that the electrons participate in the motion of the vibrational and rotational excitation of
+the molecule. The approach is semi-empirical in that it involves optimizing the reduced mass of the system.
+The polarization of the two electrons in the system is chosen such that it minimizes the difference between
+the calculated fundamental vibrational transition and the same transition calculated from experimental data.
+The fundamental vibrational transition was calculated by adding the P(1) transition in the fundamental band
+(2843.904 cm$^{-1}$ \cite{exp4}) to the J=1$\rightarrow$0 transition in the ground vibrational level
+(67.0525 cm$^{-1}$ \cite{exp1}). Tuning the reduced mass involves optimizing a parameter, $x$ in units of
+electron masses. $x$ ranges from 0 to 2 and is equal to the additional mass on the helium nucleus. The
+additional mass on the proton (or deuteron) is equal to $2-x$. The difference between the calculated
+and experimental transition has a linear relationship with x (figure \ref{xvsdiff}). The value of x at the
+intercept is 1.805. This is the value we use for the vibrational reduced mass $\mu_{\nu}$ when we apply
+the approach of Moss and Bunker \cite{nonAdiab2, nonAdiab1} which uses an effective Hamiltonian to
+account for the non-adiabatic effect:
 
+\begin{eqnarray}
+\Bigg[-\frac{\hbar^2}{2\mu_{\nu}}\frac{d^2}{dR^2} + \frac{\hbar^2}{2\mu_JR^2}J(J+1) + V(R)\Bigg]
+\Psi_{\nu,J}(R) = E_{\nu,J}\Psi_{\nu,J}(R)
+\label{effHam}
+\end{eqnarray}
+
+Equation \ref{effHam} is solved using the LEVEL program by Le Roy \cite{LEVEL}. The program takes the
+potential energy surface, $V(R)$ and the masses of the nuclei as inputs. The rotationless fundamental
+transition involves energy levels which do not contain the rotational kinetic energy term,
+$\frac{\hbar^2}{2\mu_JR^2}J(J+1)$, in the Hamiltonian.
+
+To calculate x for $\mu_J$, the difference between the calculated and experimental pure rotational
+transitions were calculated for different values of x. For He$^4$H$^+$ ,two metrics were used: the
+average of the differences between calculated and experimental for all of the transitions using data
+from \cite{exp1, exp7, exp9}, and the difference between the calculated and experimental J=1$\rightarrow$0
+transition in the ground vibrational level. The atomic reduced mass for HeH$^+$ (x = 2 a.u.) was found
+to be optimal by both metrics. Additionally, the standard deviation in the data for the first metric is
+smallest when x = 2 a.u. For other isopologues, similar metrics were used.
+
+\begin{figure}
+\caption{The difference between the calculated and experimental transitions, for He$^4$H$^+$,
+as a function of x (the quantity of electron mass polarized toward the helium nucleus). a.) The
+fundamental, rotationless transition. b.) The J=1$\rightarrow$0 transition in the fundamental level
+(blue) and the average for all pure rotational transitions (experimental data taken from \cite{exp1, exp7,
+exp9}) with standard deviations represented by error bars (red).}
+\includegraphics[width=0.5\linewidth]{expdiff}
+\label{xvsdiff}
+\end{figure}
+
+\subsection{The leading relativistic and quantum electrodynamics corrections}
 
 In high-accuracy quantum-mechanical molecular calculations
 the quantum electrodynamics (QED) provides a
